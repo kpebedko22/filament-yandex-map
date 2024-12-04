@@ -1,5 +1,5 @@
 <?php
 
-use VendorName\Skeleton\Tests\TestCase;
+use Kpebedko22\FilamentYandexMap\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
