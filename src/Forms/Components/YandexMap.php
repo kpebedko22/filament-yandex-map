@@ -35,7 +35,7 @@ final class YandexMap extends Field
         HasMode,
         HasZoom;
 
-    protected string $view = 'support.filament.yandex-map.forms.components.yandex-map';
+    protected string $view = 'filament-yandex-map::forms.components.yandex-map';
 
     protected function setUp(): void
     {
