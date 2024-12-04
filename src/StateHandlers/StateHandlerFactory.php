@@ -2,8 +2,8 @@
 
 namespace Kpebedko22\FilamentYandexMap\StateHandlers;
 
-use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use InvalidArgumentException;
+use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 
 final readonly class StateHandlerFactory
 {
@@ -13,7 +13,7 @@ final readonly class StateHandlerFactory
             YandexMapMode::Placemark => new PlacemarkStateHandler,
             YandexMapMode::Polyline => new PolylineStateHandler,
             YandexMapMode::Polygon => new PolygonStateHandler,
-            default => throw new InvalidArgumentException('Unknown mode: ' . $mode->value),
+            default => throw new InvalidArgumentException('Unknown mode: '.$mode->value),
         };
     }
 }

@@ -11,8 +11,7 @@ final readonly class Point implements Arrayable
     public function __construct(
         public float $lat,
         public float $lng,
-    ) {
-    }
+    ) {}
 
     public static function makeFromArray(array $data, int|string $latAttr = 0, int|string $lngAttr = 1): Point
     {

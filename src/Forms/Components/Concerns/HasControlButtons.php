@@ -2,9 +2,9 @@
 
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
+use Closure;
 use Kpebedko22\FilamentYandexMap\Buttons\ButtonData;
 use Kpebedko22\FilamentYandexMap\Buttons\ButtonOptions;
-use Closure;
 
 trait HasControlButtons
 {
@@ -21,7 +21,7 @@ trait HasControlButtons
     protected ButtonOptions|Closure|array $editBtnOptions = [];
 
     public function deleteBtnParameters(
-        ButtonData|Closure|array    $data = [],
+        ButtonData|Closure|array $data = [],
         ButtonOptions|Closure|array $options = [],
     ): static {
         $this->deleteBtnData = $data;
@@ -39,7 +39,7 @@ trait HasControlButtons
     }
 
     public function drawBtnParameters(
-        ButtonData|Closure|array    $data = [],
+        ButtonData|Closure|array $data = [],
         ButtonOptions|Closure|array $options = [],
     ): static {
         $this->drawBtnData = $data;
@@ -57,7 +57,7 @@ trait HasControlButtons
     }
 
     public function editBtnParameters(
-        ButtonData|Closure|array    $data = [],
+        ButtonData|Closure|array $data = [],
         ButtonOptions|Closure|array $options = [],
     ): static {
         $this->editBtnData = $data;

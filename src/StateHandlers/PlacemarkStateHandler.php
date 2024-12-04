@@ -2,9 +2,9 @@
 
 namespace Kpebedko22\FilamentYandexMap\StateHandlers;
 
-use Kpebedko22\FilamentYandexMap\Support\Point;
 use Clickbar\Magellan\Data\Geometries\Point as MagellanPoint;
 use InvalidArgumentException;
+use Kpebedko22\FilamentYandexMap\Support\Point;
 
 final class PlacemarkStateHandler implements StateHandler
 {

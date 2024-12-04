@@ -2,8 +2,8 @@
 
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
-use Kpebedko22\FilamentYandexMap\Support\Point;
 use Closure;
+use Kpebedko22\FilamentYandexMap\Support\Point;
 
 trait HasCenter
 {

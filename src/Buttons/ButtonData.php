@@ -25,8 +25,7 @@ final readonly class ButtonData implements Arrayable
         ?string $content = null,
         ?string $image = null,
         ?string $title = null,
-    )
-    {
+    ) {
         $this->content = $content;
         $this->image = $image;
         $this->title = $title;

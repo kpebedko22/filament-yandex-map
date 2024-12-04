@@ -2,6 +2,9 @@
 
 namespace Kpebedko22\FilamentYandexMap\Forms\Components;
 
+use Filament\Forms\Components\Field;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Kpebedko22\FilamentYandexMap\Buttons\ButtonData;
 use Kpebedko22\FilamentYandexMap\Buttons\ButtonOptions;
 use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonFloat;
@@ -19,9 +22,6 @@ use Kpebedko22\FilamentYandexMap\Rules\PolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolylineRule;
 use Kpebedko22\FilamentYandexMap\StateHandlers\StateHandlerFactory;
 use Kpebedko22\FilamentYandexMap\Support\Point;
-use Filament\Forms\Components\Field;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
 
 final class YandexMap extends Field
 {
@@ -76,9 +76,8 @@ final class YandexMap extends Field
      * Пример использования: в базе данных точка представлена массивом ["lat": 35, "lng": 58].
      * Линия - массив точек. Полигон - массив линий.
      *
-     * @param int|string $latAttr Название атрибута "широта" в представлении точки
-     * @param int|string $lngAttr Название атрибуета "долгота" в представлении точки
-     *
+     * @param  int|string  $latAttr  Название атрибута "широта" в представлении точки
+     * @param  int|string  $lngAttr  Название атрибуета "долгота" в представлении точки
      * @return $this
      */
     public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): YandexMap
@@ -138,7 +137,7 @@ final class YandexMap extends Field
     public function usingString(string $separator = ',', int $latIndex = 0, int $lngIndex = 1): YandexMap
     {
         $this->formatStateUsing(static function (YandexMap $component, ?Model $record) use ($separator, $latIndex, $lngIndex) {
-            if (!$record) {
+            if (! $record) {
                 return $component->getCenter();
             }
 
@@ -178,7 +177,7 @@ final class YandexMap extends Field
     public function usingTwoColumns(string $latColumn = 'lat', string $lngColumn = 'lng'): YandexMap
     {
         $this->formatStateUsing(static function (YandexMap $component, ?Model $record) use ($latColumn, $lngColumn) {
-            if (!$record) {
+            if (! $record) {
                 return $component->getCenter();
             }
 

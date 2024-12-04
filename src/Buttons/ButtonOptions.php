@@ -2,9 +2,9 @@
 
 namespace Kpebedko22\FilamentYandexMap\Buttons;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonFloat;
 use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonSize;
-use Illuminate\Contracts\Support\Arrayable;
 
 final readonly class ButtonOptions implements Arrayable
 {
@@ -72,16 +72,15 @@ final readonly class ButtonOptions implements Arrayable
     public ?bool $visible;
 
     public function __construct(
-        ?bool           $adjustMapMargin = null,
-        ?ButtonFloat    $float = null,
-        ?int            $floatIndex = null,
-        int|array|null  $maxWidth = null,
+        ?bool $adjustMapMargin = null,
+        ?ButtonFloat $float = null,
+        ?int $floatIndex = null,
+        int|array|null $maxWidth = null,
         ?ButtonPosition $position = null,
-        ?bool           $selectOnClick = null,
-        ?ButtonSize     $size = null,
-        ?bool           $visible = null,
-    )
-    {
+        ?bool $selectOnClick = null,
+        ?ButtonSize $size = null,
+        ?bool $visible = null,
+    ) {
         $this->adjustMapMargin = $adjustMapMargin;
         $this->float = $float;
         $this->floatIndex = $floatIndex;

@@ -2,9 +2,9 @@
 
 namespace Kpebedko22\FilamentYandexMap\GeoObjects;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Kpebedko22\FilamentYandexMap\Placemark\PresetIcon;
 use Kpebedko22\FilamentYandexMap\Placemark\PresetStorage;
-use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * TODO: Добавить все остальные опции
@@ -25,7 +25,7 @@ final readonly class GeoObjectOptions implements Arrayable
 
     public function __construct(
         PresetStorage|PresetIcon|string|null $preset = null,
-        ?string                              $iconColor = null,
+        ?string $iconColor = null,
     ) {
         $this->preset = $preset;
         $this->iconColor = $iconColor;

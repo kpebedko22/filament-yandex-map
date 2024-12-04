@@ -2,8 +2,8 @@
 
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
-use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use Closure;
+use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 
 trait HasMode
 {

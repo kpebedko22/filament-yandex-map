@@ -15,8 +15,8 @@ final readonly class PolygonRule implements ValidationRule
     private const int MIN_POINTS_COUNT = 4;
 
     public function validate(
-        string  $attribute,
-        mixed   $value,
+        string $attribute,
+        mixed $value,
         Closure $fail
     ): void {
         if (is_array($value)) {
