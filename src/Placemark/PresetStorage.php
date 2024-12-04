@@ -3,7 +3,7 @@
 namespace Kpebedko22\FilamentYandexMap\Placemark;
 
 /**
- * @link https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/option.presetStorage
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/option.presetStorage
  */
 enum PresetStorage: string
 {

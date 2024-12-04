@@ -22,9 +22,9 @@ const defaultOptions = {
     platform: 'neutral',
     sourcemap: isDev ? 'inline' : false,
     sourcesContent: isDev,
-    treeShaking: true,
     target: ['es2020'],
-    minify: !isDev,
+    minifySyntax: true,
+    minifyWhitespace: true,
     plugins: [{
         name: 'watchPlugin',
         setup: function (build) {

@@ -7,19 +7,19 @@ use Kpebedko22\FilamentYandexMap\Placemark\PresetIcon;
 use Kpebedko22\FilamentYandexMap\Placemark\PresetStorage;
 
 /**
- * TODO: Добавить все остальные опции
+ * TODO: Add other options.
  *
- * @link https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/Placemark#param-options
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/Placemark#param-options
  */
 final readonly class GeoObjectOptions implements Arrayable
 {
     /**
-     * Ключ предустановленных стилей метки
+     * Key for the placemark's preset options.
      */
     public PresetStorage|PresetIcon|string|null $preset;
 
     /**
-     * Цвет иконки метки
+     * The color of the placemark icon.
      */
     public ?string $iconColor;
 

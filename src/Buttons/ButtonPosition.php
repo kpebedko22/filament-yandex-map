@@ -4,25 +4,30 @@ namespace Kpebedko22\FilamentYandexMap\Buttons;
 
 use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * Object describing the position of a control.
+ *
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.options.position
+ */
 final readonly class ButtonPosition implements Arrayable
 {
     /**
-     * Положение относительно нижнего края карты.
+     * Position relative to the bottom edge of the map.
      */
     public int|string|null $bottom;
 
     /**
-     * Положение относительно левого края карты.
+     * Position relative to the left edge of the map.
      */
     public int|string|null $left;
 
     /**
-     * Положение относительно правого края карты.
+     * Position relative to the right edge of the map.
      */
     public int|string|null $right;
 
     /**
-     * Положение относительно верхнего края карты.
+     * Position relative to the top edge of the map.
      */
     public int|string|null $top;
 

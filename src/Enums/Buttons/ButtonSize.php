@@ -2,28 +2,30 @@
 
 namespace Kpebedko22\FilamentYandexMap\Enums\Buttons;
 
+/**
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.options.size
+ */
 enum ButtonSize: string
 {
     /**
-     * Стандартный макет кнопки автоматически изменяет свой внешний вид в
-     * зависимости от размеров карты и от количества добавленных
-     * элементов управления;
+     * The default button layout is changed automatically depending on the
+     * dimensions of the map and the number of added controls.
      */
     case Auto = 'auto';
 
     /**
-     * В макете кнопки отображается иконка, независимо от размера карты;
+     * The button layout displays the icon, regardless of the map size.
      */
     case Small = 'small';
 
     /**
-     * В макете кнопки отображается только текст, независимо от размера карты;
+     * The button layout displays only text, regardless of the map size.
      */
     case Medium = 'medium';
 
     /**
-     * В макете кнопки всегда отображается иконка и текст, независимо
-     * от размера карты.
+     * The button layout always displays both the icon and text,
+     * regardless of the map size.
      */
     case Large = 'large';
 }

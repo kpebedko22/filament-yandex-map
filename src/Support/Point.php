@@ -2,6 +2,7 @@
 
 namespace Kpebedko22\FilamentYandexMap\Support;
 
+use Clickbar\Magellan\Data\Geometries\Point as MagellanPoint;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
@@ -11,10 +12,14 @@ final readonly class Point implements Arrayable
     public function __construct(
         public float $lat,
         public float $lng,
-    ) {}
+    ) {
+    }
 
-    public static function makeFromArray(array $data, int|string $latAttr = 0, int|string $lngAttr = 1): Point
-    {
+    public static function makeFromArray(
+        array      $data,
+        int|string $latAttr = 0,
+        int|string $lngAttr = 1
+    ): Point {
         $lat = Arr::get($data, $latAttr);
         $lng = Arr::get($data, $lngAttr);
 
@@ -29,7 +34,7 @@ final readonly class Point implements Arrayable
         return new self($lat, $lng);
     }
 
-    public static function makeFromMagellan(\Clickbar\Magellan\Data\Geometries\Point $point): Point
+    public static function makeFromMagellan(MagellanPoint $point): Point
     {
         return new self($point->getLatitude(), $point->getLongitude());
     }

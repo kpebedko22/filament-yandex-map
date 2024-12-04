@@ -5,50 +5,42 @@ namespace Kpebedko22\FilamentYandexMap\GeoObjects;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * Данные метки.
- *
- * @link https://yandex.ru/dev/jsapi-v2-1/doc/ru/v2-1/ref/reference/Placemark#param-properties
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/Placemark#param-properties
  */
 final readonly class GeoObjectProperties implements Arrayable
 {
     /**
-     * Содержимое иконки геообъекта
+     * Content of the geo object's icon.
      */
     public ?string $iconContent;
 
     /**
-     * Подпись иконки геообъекта
+     * Caption for the geo object's icon.
      */
     public ?string $iconCaption;
 
     /**
-     * Содержимое всплывающей подсказки геообъекта
+     * Content of the geo object's popup hint.
      */
     public ?string $hintContent;
 
     /**
-     * Содержимое балуна геообъекта.
-     *
-     * Поле balloonContent является кратким обозначением для поля
-     * balloonContentBody, но при одновременном задании balloonContentBody
-     * более приоритетен. Также вы можете дополнить данные метки своими
-     * собственными полями и использовать их везде, где это возможно.
-     * Например в макете метки или макете балуна.
+     * Content of the geo object's balloon.
      */
     public ?string $balloonContent;
 
     /**
-     * Содержимое заголовка балуна геообъекта
+     * Content of the geo object balloon title.
      */
     public ?string $balloonContentHeader;
 
     /**
-     * Содержимое основой части балуна геообъекта
+     * Content of the main part of the geo object's balloon.
      */
     public ?string $balloonContentBody;
 
     /**
-     * Содержимое нижней части балуна геообъекта
+     * Content of the lower part of the geo object's balloon.
      */
     public ?string $balloonContentFooter;
 

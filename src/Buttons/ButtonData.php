@@ -4,20 +4,25 @@ namespace Kpebedko22\FilamentYandexMap\Buttons;
 
 use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.data
+ */
 final readonly class ButtonData implements Arrayable
 {
     /**
-     * Содержимое кнопки в виде HTML.
+     * Button contents in HTML format.
      */
     public ?string $content;
 
     /**
-     * URL иконки кнопки. Стандартный макет кнопки рассчитан на иконку размером 16x16 пикселей.
+     * URL of the button icon. The standard layout of a button is
+     * designed for the icon size 16x16 pixels.
      */
     public ?string $image;
 
     /**
-     * Текст всплывающей подсказки, которая появляется при наведении на кнопку курсора мыши.
+     * Text of the popup hint that appears when the mouse cursor
+     * hovers over the button.
      */
     public ?string $title;
 

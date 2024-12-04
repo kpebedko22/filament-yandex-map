@@ -3,7 +3,10 @@
     "description": "This is my package filament-yandex-map",
     "keywords": [
         "laravel",
-        "filament-yandex-map"
+        "filament",
+        "filament form component",
+        "filament-yandex-map",
+        "yandex-map"
     ],
     "homepage": "https://github.com/kpebedko22/filament-yandex-map",
     "license": "MIT",
@@ -14,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
