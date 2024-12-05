@@ -3,7 +3,7 @@
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
 use Closure;
-use Kpebedko22\FilamentYandexMap\GeoObjects\GeoObjectOptions;
+use Kpebedko22\FilamentYandexMap\DTOs\GeoObjects\GeoObjectOptions;
 
 trait HasGeoObjectOptions
 {

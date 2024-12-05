@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\Placemark;
+namespace Kpebedko22\FilamentYandexMap\Enums\Placemarks;
 
 /**
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/option.presetStorage

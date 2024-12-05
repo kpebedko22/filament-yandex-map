@@ -3,8 +3,8 @@
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
 use Closure;
-use Kpebedko22\FilamentYandexMap\Buttons\ButtonData;
-use Kpebedko22\FilamentYandexMap\Buttons\ButtonOptions;
+use Kpebedko22\FilamentYandexMap\DTOs\Buttons\ButtonData;
+use Kpebedko22\FilamentYandexMap\DTOs\Buttons\ButtonOptions;
 
 trait HasControlButtons
 {

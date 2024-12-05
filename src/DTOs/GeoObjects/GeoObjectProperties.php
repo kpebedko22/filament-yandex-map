@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\GeoObjects;
+namespace Kpebedko22\FilamentYandexMap\DTOs\GeoObjects;
 
 use Illuminate\Contracts\Support\Arrayable;
 
@@ -72,6 +72,6 @@ final readonly class GeoObjectProperties implements Arrayable
             'balloonContentHeader' => $this->balloonContentHeader,
             'balloonContentBody' => $this->balloonContentBody,
             'balloonContentFooter' => $this->balloonContentFooter,
-        ])->filter()->toArray();
+        ])->whereNotNull()->toArray();
     }
 }

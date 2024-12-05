@@ -1,10 +1,10 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\GeoObjects;
+namespace Kpebedko22\FilamentYandexMap\DTOs\GeoObjects;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Kpebedko22\FilamentYandexMap\Placemark\PresetIcon;
-use Kpebedko22\FilamentYandexMap\Placemark\PresetStorage;
+use Kpebedko22\FilamentYandexMap\DTOs\Placemarks\PresetIcon;
+use Kpebedko22\FilamentYandexMap\Enums\Placemarks\PresetStorage;
 
 /**
  * TODO: Add other options.
@@ -36,6 +36,6 @@ final readonly class GeoObjectOptions implements Arrayable
         return collect([
             'preset' => $this->preset,
             'iconColor' => $this->iconColor,
-        ])->filter()->toArray();
+        ])->whereNotNull()->toArray();
     }
 }

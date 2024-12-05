@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\Placemark;
+namespace Kpebedko22\FilamentYandexMap\Enums\Placemarks;
 
 enum Color: string
 {

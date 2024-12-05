@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\StateHandlers;
+namespace Kpebedko22\FilamentYandexMap\Services\StateHandlers;
 
 use InvalidArgumentException;
 use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;

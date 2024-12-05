@@ -1,10 +1,10 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\StateHandlers;
+namespace Kpebedko22\FilamentYandexMap\Services\StateHandlers;
 
 use Clickbar\Magellan\Data\Geometries\Point as MagellanPoint;
 use InvalidArgumentException;
-use Kpebedko22\FilamentYandexMap\Support\Point;
+use Kpebedko22\FilamentYandexMap\ValueObjects\Point;
 
 final class PlacemarkStateHandler implements StateHandler
 {

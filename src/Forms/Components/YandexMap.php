@@ -3,10 +3,8 @@
 namespace Kpebedko22\FilamentYandexMap\Forms\Components;
 
 use Filament\Forms\Components\Field;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
-use Kpebedko22\FilamentYandexMap\Buttons\ButtonData;
-use Kpebedko22\FilamentYandexMap\Buttons\ButtonOptions;
+use Kpebedko22\FilamentYandexMap\DTOs\Buttons\ButtonData;
+use Kpebedko22\FilamentYandexMap\DTOs\Buttons\ButtonOptions;
 use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonFloat;
 use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasApiKeys;
@@ -20,8 +18,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasZoom;
 use Kpebedko22\FilamentYandexMap\Rules\PolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolylineRule;
-use Kpebedko22\FilamentYandexMap\StateHandlers\StateHandlerFactory;
-use Kpebedko22\FilamentYandexMap\Support\Point;
+use Kpebedko22\FilamentYandexMap\Services\StateHandlers\StateHandlerFactory;
 
 final class YandexMap extends Field
 {
@@ -72,14 +69,6 @@ final class YandexMap extends Field
         );
     }
 
-    /**
-     * Пример использования: в базе данных точка представлена массивом ["lat": 35, "lng": 58].
-     * Линия - массив точек. Полигон - массив линий.
-     *
-     * @param  int|string  $latAttr  Название атрибута "широта" в представлении точки
-     * @param  int|string  $lngAttr  Название атрибуета "долгота" в представлении точки
-     * @return $this
-     */
     public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): YandexMap
     {
         $this->formatStateUsing(static function (YandexMap $component, mixed $state) use ($latAttr, $lngAttr) {
@@ -129,69 +118,6 @@ final class YandexMap extends Field
             }
 
             return $handler->dehydrateMagellanState($state);
-        });
-
-        return $this;
-    }
-
-    public function usingString(string $separator = ',', int $latIndex = 0, int $lngIndex = 1): YandexMap
-    {
-        $this->formatStateUsing(static function (YandexMap $component, ?Model $record) use ($separator, $latIndex, $lngIndex) {
-            if (! $record) {
-                return $component->getCenter();
-            }
-
-            $statePath = $component->getStatePath(false);
-
-            $data = $record->{$statePath};
-            $data = explode($separator, $data);
-
-            $lat = Arr::get($data, $latIndex);
-            $lng = Arr::get($data, $lngIndex);
-
-            return (new Point($lat, $lng))->toArray();
-        });
-
-        $this->dehydrateStateUsing(static function ($state) use ($separator, $latIndex, $lngIndex) {
-            $lat = Arr::get($state, 'lat');
-            $lng = Arr::get($state, 'lng');
-
-            $data = [
-                $latIndex => $lat,
-                $lngIndex => $lng,
-            ];
-
-            ksort($data);
-
-            return implode($separator, $data);
-        });
-
-        return $this;
-    }
-
-    /**
-     * FIXME: не работает в полной мере и треубет ручной мутации данных
-     *
-     * @return $this
-     */
-    public function usingTwoColumns(string $latColumn = 'lat', string $lngColumn = 'lng'): YandexMap
-    {
-        $this->formatStateUsing(static function (YandexMap $component, ?Model $record) use ($latColumn, $lngColumn) {
-            if (! $record) {
-                return $component->getCenter();
-            }
-
-            $lat = $record->{$latColumn};
-            $lng = $record->{$lngColumn};
-
-            return (new Point($lat, $lng))->toArray();
-        });
-
-        $this->dehydrateStateUsing(function ($state) use ($latColumn, $lngColumn) {
-            return [
-                $latColumn => $state['lat'] ?? null,
-                $lngColumn => $state['lng'] ?? null,
-            ];
         });
 
         return $this;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\Buttons;
+namespace Kpebedko22\FilamentYandexMap\DTOs\Buttons;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonFloat;

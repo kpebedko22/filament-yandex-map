@@ -1,6 +1,10 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\Placemark;
+namespace Kpebedko22\FilamentYandexMap\DTOs\Placemarks;
+
+use Kpebedko22\FilamentYandexMap\Enums\Placemarks\Badge;
+use Kpebedko22\FilamentYandexMap\Enums\Placemarks\Color;
+use Kpebedko22\FilamentYandexMap\Enums\Placemarks\Icon;
 
 /**
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/option.presetStorage

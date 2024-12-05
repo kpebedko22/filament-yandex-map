@@ -1,6 +1,6 @@
 <?php
 
-namespace Kpebedko22\FilamentYandexMap\Support;
+namespace Kpebedko22\FilamentYandexMap\ValueObjects;
 
 use Clickbar\Magellan\Data\Geometries\Point as MagellanPoint;
 use Illuminate\Contracts\Support\Arrayable;
