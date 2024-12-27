@@ -1,0 +1,71 @@
+<?php
+
+namespace Kpebedko22\FilamentYandexMap\Enums\Placemarks;
+
+enum Badge: string
+{
+    case Airport = 'Airport';
+    case Attention = 'Attention';
+    case Auto = 'Auto';
+    case Bar = 'Bar';
+    case Barber = 'Barber';
+    case Beach = 'Beach';
+    case Bicycle = 'Bicycle';
+    case Bicycle2 = 'Bicycle2';
+    case Book = 'Book';
+    case CarWash = 'CarWash';
+    case Christian = 'Christian';
+    case Cinema = 'Cinema';
+    case Circus = 'Circus';
+    case Court = 'Court';
+    case Delivery = 'Delivery';
+    case Discount = 'Discount';
+    case Dog = 'Dog';
+    case Education = 'Education';
+    case EntertainmentCenter = 'EntertainmentCenter';
+    case Factory = 'Factory';
+    case Family = 'Family';
+    case Fashion = 'Fashion';
+    case Food = 'Food';
+    case FuelStation = 'FuelStation';
+    case Garden = 'Garden';
+    case Government = 'Government';
+    case Heart = 'Heart';
+    case Home = 'Home';
+    case Hotel = 'Hotel';
+    case Hydro = 'Hydro';
+    case Info = 'Info';
+    case Laundry = 'Laundry';
+    case Leisure = 'Leisure';
+    case MassTransit = 'MassTransit';
+    case Medical = 'Medical';
+    case Money = 'Money';
+    case Mountain = 'Mountain';
+    case NightClub = 'NightClub';
+    case Observation = 'Observation';
+    case Park = 'Park';
+    case Parking = 'Parking';
+    case Person = 'Person';
+    case Pocket = 'Pocket';
+    case Pool = 'Pool';
+    case Post = 'Post';
+    case Railway = 'Railway';
+    case RapidTransit = 'RapidTransit';
+    case RepairShop = 'RepairShop';
+    case Run = 'Run';
+    case Science = 'Science';
+    case Shopping = 'Shopping';
+    case Souvenirs = 'Souvenirs';
+    case Sport = 'Sport';
+    case Star = 'Star';
+    case Theater = 'Theater';
+    case Toilet = 'Toilet';
+    case Underpass = 'Underpass';
+    case Vegetation = 'Vegetation';
+    case Video = 'Video';
+    case Waste = 'Waste';
+    case WaterPark = 'WaterPark';
+    case Waterway = 'Waterway';
+    case Worship = 'Worship';
+    case Zoo = 'Zoo';
+}
