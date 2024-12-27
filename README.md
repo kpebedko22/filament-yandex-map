@@ -18,8 +18,8 @@ return [
     // ...
     
     'yandex_map' => [
-        'api_key' => env('YANDEX_MAP_API_KEY'),
-        'suggest_api_key' => env('YANDEX_MAP_SUGGEST_API_KEY'),
+        'api_key' => env('YANDEX_MAP_API_KEY', ''),
+        'suggest_api_key' => env('YANDEX_MAP_SUGGEST_API_KEY', ''),
         'lang' => 'ru_RU',
         'center' => [53.35, 83.75],
         'zoom' => 12,
@@ -92,7 +92,7 @@ The package uses array of two coordinates `[lat, lng]` for storing point coordin
 E.g.: `[53.35, 83.75]`, where `53.35` is latitude and `83.75` is longitude.
 
 If you're store coordinates of point as json-object, e.g.: `{"lat": 53.35, "lng": 83.75}`, then you
-should use `->usingJson('lat', 'lng')` method.
+should use `->usingArray('lat', 'lng')` method.
 
 ### Postgis column (PostgreSQL)
 
