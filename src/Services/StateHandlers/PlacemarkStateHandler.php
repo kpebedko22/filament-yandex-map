@@ -6,7 +6,7 @@ use Clickbar\Magellan\Data\Geometries\Point as MagellanPoint;
 use InvalidArgumentException;
 use Kpebedko22\FilamentYandexMap\ValueObjects\Point;
 
-final class PlacemarkStateHandler implements StateHandler
+class PlacemarkStateHandler implements StateHandler
 {
     private string $latAttr;
 

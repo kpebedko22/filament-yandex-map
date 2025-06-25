@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Arrayable;
 /**
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.data
  */
-final readonly class ButtonData implements Arrayable
+readonly class ButtonData implements Arrayable
 {
     /**
      * Button contents in HTML format.

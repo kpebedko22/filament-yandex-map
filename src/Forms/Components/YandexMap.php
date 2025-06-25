@@ -20,7 +20,7 @@ use Kpebedko22\FilamentYandexMap\Rules\PolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolylineRule;
 use Kpebedko22\FilamentYandexMap\Services\StateHandlers\StateHandlerFactory;
 
-final class YandexMap extends Field
+class YandexMap extends Field
 {
     use HasApiKeys,
         HasCenter,

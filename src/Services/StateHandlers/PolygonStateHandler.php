@@ -5,7 +5,7 @@ namespace Kpebedko22\FilamentYandexMap\Services\StateHandlers;
 use Clickbar\Magellan\Data\Geometries\Polygon as MagellanPolygon;
 use InvalidArgumentException;
 
-final class PolygonStateHandler implements StateHandler
+class PolygonStateHandler implements StateHandler
 {
     private PolylineStateHandler $polylineStateHandler;
 

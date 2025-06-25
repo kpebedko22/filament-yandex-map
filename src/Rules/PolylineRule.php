@@ -8,13 +8,13 @@ use Illuminate\Contracts\Validation\ValidationRule;
 /**
  * Polyline must have at least 2 points
  */
-final readonly class PolylineRule implements ValidationRule
+readonly class PolylineRule implements ValidationRule
 {
     private const int MIN_POINTS_COUNT = 2;
 
     public function validate(
-        string $attribute,
-        mixed $value,
+        string  $attribute,
+        mixed   $value,
         Closure $fail
     ): void {
         if (is_array($value) && count($value) < self::MIN_POINTS_COUNT) {
