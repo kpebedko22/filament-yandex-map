@@ -11,7 +11,7 @@ use Kpebedko22\FilamentYandexMap\Enums\Placemarks\PresetStorage;
  *
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/Placemark#param-options
  */
-final readonly class GeoObjectOptions implements Arrayable
+readonly class GeoObjectOptions implements Arrayable
 {
     /**
      * Key for the placemark's preset options.
@@ -23,12 +23,16 @@ final readonly class GeoObjectOptions implements Arrayable
      */
     public ?string $iconColor;
 
+    public ?int $strokeWidth;
+
     public function __construct(
         PresetStorage|PresetIcon|string|null $preset = null,
-        ?string $iconColor = null,
+        ?string                              $iconColor = null,
+        ?int                                 $strokeWidth = null,
     ) {
         $this->preset = $preset;
         $this->iconColor = $iconColor;
+        $this->strokeWidth = $strokeWidth;
     }
 
     public function toArray(): array
@@ -36,6 +40,7 @@ final readonly class GeoObjectOptions implements Arrayable
         return collect([
             'preset' => $this->preset,
             'iconColor' => $this->iconColor,
+            'strokeWidth' => $this->strokeWidth,
         ])->whereNotNull()->toArray();
     }
 }

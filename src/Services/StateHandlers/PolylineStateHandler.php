@@ -5,7 +5,7 @@ namespace Kpebedko22\FilamentYandexMap\Services\StateHandlers;
 use Clickbar\Magellan\Data\Geometries\LineString as MagellanLineString;
 use InvalidArgumentException;
 
-final class PolylineStateHandler implements StateHandler
+class PolylineStateHandler implements StateHandler
 {
     private PlacemarkStateHandler $placemarkStateHandler;
 

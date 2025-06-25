@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
  *
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.options.position
  */
-final readonly class ButtonPosition implements Arrayable
+readonly class ButtonPosition implements Arrayable
 {
     /**
      * Position relative to the bottom edge of the map.

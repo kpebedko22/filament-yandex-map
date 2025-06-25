@@ -48,3 +48,9 @@ compile({
     entryPoints: ['./resources/js/filament-yandex-map.js'],
     outfile: './resources/js/dist/filament-yandex-map.js',
 })
+
+compile({
+    ...defaultOptions,
+    entryPoints: ['./resources/js/filament-yandex-map-entry.js'],
+    outfile: './resources/js/dist/filament-yandex-map-entry.js',
+})

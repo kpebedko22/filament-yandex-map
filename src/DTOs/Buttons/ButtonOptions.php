@@ -9,7 +9,7 @@ use Kpebedko22\FilamentYandexMap\Enums\Buttons\ButtonSize;
 /**
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/control.Button#param-parameters.options
  */
-final readonly class ButtonOptions implements Arrayable
+readonly class ButtonOptions implements Arrayable
 {
     /**
      * Whether the button registers its size in the map margins
@@ -53,14 +53,14 @@ final readonly class ButtonOptions implements Arrayable
     public ?bool $visible;
 
     public function __construct(
-        ?bool $adjustMapMargin = null,
-        ?ButtonFloat $float = null,
-        ?int $floatIndex = null,
-        int|array|null $maxWidth = null,
+        ?bool           $adjustMapMargin = null,
+        ?ButtonFloat    $float = null,
+        ?int            $floatIndex = null,
+        int|array|null  $maxWidth = null,
         ?ButtonPosition $position = null,
-        ?bool $selectOnClick = null,
-        ?ButtonSize $size = null,
-        ?bool $visible = null,
+        ?bool           $selectOnClick = null,
+        ?ButtonSize     $size = null,
+        ?bool           $visible = null,
     ) {
         $this->adjustMapMargin = $adjustMapMargin;
         $this->float = $float;

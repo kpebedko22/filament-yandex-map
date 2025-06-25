@@ -7,7 +7,7 @@ use Illuminate\Contracts\Support\Arrayable;
 /**
  * @link https://yandex.ru/dev/jsapi-v2-1/doc/en/v2-1/ref/reference/Placemark#param-properties
  */
-final readonly class GeoObjectProperties implements Arrayable
+readonly class GeoObjectProperties implements Arrayable
 {
     /**
      * Content of the geo object's icon.
