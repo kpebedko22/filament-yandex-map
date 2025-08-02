@@ -202,6 +202,29 @@ No tests yet.
 composer test
 ```
 
+## Sandbox
+
+Detailed information about sandbox you can find in [Sandbox README](./sandbox/README.md) file.
+
+### How to set up and run
+
+Setup `./sandbox/.env` file.
+
+Create a symlink to the `.env` file in the project root:
+
+```bash
+ln -sf ./sandbox/.env ./.env
+```
+
+Build and start Docker containers:
+
+```bash
+make build
+make up
+```
+
+Run Artisan commands inside the `fpm` container.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

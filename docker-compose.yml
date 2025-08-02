@@ -1,0 +1,52 @@
+services:
+    # NGINX
+    nginx:
+        image: nginx:alpine
+        ports:
+            - '${DEPLOYMENT_PROXY_PORT:-8000}:80'
+        volumes:
+            - './:/var/www'
+            - './deploy/nginx:/etc/nginx/conf.d/'
+            - '${APP_STORAGE_PATH}:/mnt/storage'
+        networks:
+            - main
+        depends_on:
+            - fpm
+
+    # FPM
+    fpm:
+        image: filament-yandex-map-fpm
+        build:
+            context: ./
+            dockerfile: sandbox/deploy/fpm/Dockerfile
+        working_dir: /var/www/sandbox
+        volumes:
+            - './:/var/www'
+            - '${APP_STORAGE_PATH}:/mnt/storage'
+        networks:
+            - main
+        environment:
+            PHP_IDE_CONFIG: serverName=filament-yandex-map-fpm
+
+    # PGSQL
+    pgsql:
+        image: postgis/postgis:17-3.5
+        volumes:
+            - "pgsql:/var/lib/postgresql/data"
+        environment:
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_DATABASE}
+        ports:
+            - '${FORWARD_PGSQL_PORT:-5432}:5432'
+        networks:
+            - main
+
+# SHARED SETTINGS
+networks:
+    main:
+        name: main
+        driver: bridge
+volumes:
+    pgsql:
+        driver: local

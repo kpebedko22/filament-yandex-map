@@ -67,5 +67,16 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "archive": {
+        "exclude": [
+            "/sandbox",
+            "docker-compose.yml",
+            "/deploy",
+            "Makefile"
+        ]
+    },
+    "exclude-from-classmap": [
+        "sandbox/"
+    ]
 }
