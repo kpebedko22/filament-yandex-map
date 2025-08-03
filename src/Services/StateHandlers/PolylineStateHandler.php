@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 class PolylineStateHandler implements StateHandler
 {
-    private PlacemarkStateHandler $placemarkStateHandler;
+    protected PlacemarkStateHandler $placemarkStateHandler;
 
     public function __construct()
     {

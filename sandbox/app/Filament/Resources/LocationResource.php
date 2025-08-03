@@ -7,13 +7,13 @@ use App\Models\Location;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Section as InfolistSection;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
+use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 
 final class LocationResource extends Resource
 {
@@ -30,8 +30,15 @@ final class LocationResource extends Resource
         return $infolist
             ->schema([
                 InfolistSection::make()
+                    ->columns()
                     ->schema([
-                        TextEntry::make('id'),
+                        YandexMapEntry::make('array_point')
+                            ->mode(YandexMapMode::Placemark)
+                            ->usingArray(),
+
+                        YandexMapEntry::make('magellan_point')
+                            ->mode(YandexMapMode::Placemark)
+                            ->usingMagellan(),
                     ]),
             ]);
     }

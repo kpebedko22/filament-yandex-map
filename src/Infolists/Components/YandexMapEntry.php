@@ -3,6 +3,7 @@
 namespace Kpebedko22\FilamentYandexMap\Infolists\Components;
 
 use Filament\Infolists\Components\Entry;
+use Illuminate\Database\Eloquent\Model;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasApiKeys;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasCenter;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasGeoObjectOptions;
@@ -11,6 +12,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasHeight;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasLang;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasZoom;
+use Kpebedko22\FilamentYandexMap\Services\StateHandlers\StateHandlerFactory;
 
 class YandexMapEntry extends Entry
 {
@@ -35,5 +37,40 @@ class YandexMapEntry extends Entry
         $this->center = config('services.yandex_map.center');
         $this->lang = config('services.yandex_map.lang');
         $this->height = '600px';
+    }
+
+    public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): static
+    {
+        $this->getStateUsing(static function (YandexMapEntry $component, Model $record) use ($latAttr, $lngAttr) {
+            $state = $component->getStateFromRecord($record);
+
+            if ($state === null) {
+                return null;
+            }
+
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->usingLatLngAttributes($latAttr, $lngAttr)
+                ->formatJsonState($state);
+        });
+
+        return $this;
+    }
+
+    public function usingMagellan(): static
+    {
+        $this->getStateUsing(static function (YandexMapEntry $component, Model $record) {
+            $state = $component->getStateFromRecord($record);
+
+            if ($state === null) {
+                return null;
+            }
+
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->formatMagellanState($state);
+        });
+
+        return $this;
     }
 }

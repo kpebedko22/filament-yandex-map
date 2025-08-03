@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 class PolygonStateHandler implements StateHandler
 {
-    private PolylineStateHandler $polylineStateHandler;
+    protected PolylineStateHandler $polylineStateHandler;
 
     public function __construct()
     {

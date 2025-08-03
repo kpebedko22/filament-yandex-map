@@ -10,9 +10,9 @@ use Illuminate\Contracts\Validation\ValidationRule;
  *
  * Therefore, polygons' first and last point is the same then MIN_POINTS_COUNT is 4.
  */
-readonly class PolygonRule implements ValidationRule
+class PolygonRule implements ValidationRule
 {
-    private const int MIN_POINTS_COUNT = 4;
+    protected const int MIN_POINTS_COUNT = 4;
 
     public function validate(
         string  $attribute,

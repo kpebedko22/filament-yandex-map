@@ -8,9 +8,9 @@ use Kpebedko22\FilamentYandexMap\ValueObjects\Point;
 
 class PlacemarkStateHandler implements StateHandler
 {
-    private string $latAttr;
+    protected string $latAttr;
 
-    private string $lngAttr;
+    protected string $lngAttr;
 
     public function __construct()
     {

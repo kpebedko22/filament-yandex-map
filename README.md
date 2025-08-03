@@ -35,6 +35,8 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
 
 ## Usage
 
+### Form component
+
 ```php
 ->schema([
     YandexMap::make('point')
@@ -67,6 +69,33 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
         // for common cases. Find more information further below. 
         ->usingArray('lat', 'lng')
         ->usingMagellan() 
+])
+```
+
+### Infolist component
+
+```php
+->schema([
+    YandexMapEntry::make('point')
+        // Set mode of geo-object. Always required!
+        ->mode(YandexMapMode::Placemark) 
+        // By default, values are taken from config
+        // You are free to override them using plain values or closure
+        ->apiKey('your_yandex_api_key')
+        ->suggestApiKey('your_yandex_suggest_api_key')
+        ->center([53.35, 83.75])
+        ->zoom(12)
+        ->lang('ru_RU')
+        // By default: 600px
+        ->height('600px')  
+        // Setup geo-object
+        ->geoObjectOptions(new GeoObjectOptions())
+        ->geoObjectProperties(new GeoObjectProperties())
+        // It's required to set up `getStateUsing` method
+        // to properly take data from record. The package provides some implementations
+        // for common cases. Find more information further below. 
+        ->usingArray('lat', 'lng')
+        ->usingMagellan()
 ])
 ```
 

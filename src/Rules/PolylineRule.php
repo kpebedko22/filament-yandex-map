@@ -8,9 +8,9 @@ use Illuminate\Contracts\Validation\ValidationRule;
 /**
  * Polyline must have at least 2 points
  */
-readonly class PolylineRule implements ValidationRule
+class PolylineRule implements ValidationRule
 {
-    private const int MIN_POINTS_COUNT = 2;
+    protected const int MIN_POINTS_COUNT = 2;
 
     public function validate(
         string  $attribute,

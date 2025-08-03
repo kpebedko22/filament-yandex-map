@@ -7,13 +7,13 @@ use App\Models\Route;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Section as InfolistSection;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
+use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 
 final class RouteResource extends Resource
 {
@@ -30,8 +30,15 @@ final class RouteResource extends Resource
         return $infolist
             ->schema([
                 InfolistSection::make()
+                    ->columns()
                     ->schema([
-                        TextEntry::make('id'),
+                        YandexMapEntry::make('array_line')
+                            ->mode(YandexMapMode::Polyline)
+                            ->usingArray(),
+
+                        YandexMapEntry::make('magellan_line')
+                            ->mode(YandexMapMode::Polyline)
+                            ->usingMagellan(),
                     ]),
             ]);
     }

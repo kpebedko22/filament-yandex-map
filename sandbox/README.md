@@ -44,6 +44,8 @@ This means that the package from the parent directory (`../`) is symlinked into
 the sandbox during development, so changes made to the package code are immediately
 reflected in the sandbox.
 
+Use `php artisan filament:assets` to publish assets (js files for form and infolist components).
+
 ## 📦 How the sandbox and dev files are excluded from distribution
 
 In the package's own `composer.json`, the following options are set to exclude unnecessary

@@ -69,55 +69,53 @@ class YandexMap extends Field
         );
     }
 
-    public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): YandexMap
+    public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): static
     {
         $this->formatStateUsing(static function (YandexMap $component, mixed $state) use ($latAttr, $lngAttr) {
-            $handler = (new StateHandlerFactory)
-                ->getHandler($component->getMode())
-                ->usingLatLngAttributes($latAttr, $lngAttr);
-
             if ($state === null) {
                 return null;
             }
 
-            return $handler->formatJsonState($state);
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->usingLatLngAttributes($latAttr, $lngAttr)
+                ->formatJsonState($state);
         });
 
         $this->dehydrateStateUsing(static function (YandexMap $component, mixed $state) use ($latAttr, $lngAttr) {
-            $handler = (new StateHandlerFactory)
-                ->getHandler($component->getMode())
-                ->usingLatLngAttributes($latAttr, $lngAttr);
-
             if ($state === null) {
                 return null;
             }
 
-            return $handler->dehydrateJsonState($state);
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->usingLatLngAttributes($latAttr, $lngAttr)
+                ->dehydrateJsonState($state);
         });
 
         return $this;
     }
 
-    public function usingMagellan(): YandexMap
+    public function usingMagellan(): static
     {
         $this->formatStateUsing(static function (YandexMap $component, mixed $state) {
-            $handler = (new StateHandlerFactory)->getHandler($component->getMode());
-
             if ($state === null) {
                 return null;
             }
 
-            return $handler->formatMagellanState($state);
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->formatMagellanState($state);
         });
 
-        $this->dehydrateStateUsing(function (YandexMap $component, mixed $state) {
-            $handler = (new StateHandlerFactory)->getHandler($component->getMode());
-
+        $this->dehydrateStateUsing(static function (YandexMap $component, mixed $state) {
             if ($state === null) {
                 return null;
             }
 
-            return $handler->dehydrateMagellanState($state);
+            return (new StateHandlerFactory)
+                ->getHandler($component->getMode())
+                ->dehydrateMagellanState($state);
         });
 
         return $this;
