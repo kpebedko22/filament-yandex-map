@@ -13,7 +13,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * @property int $id
+ * @property-read int $id
+ *
  * @property string $name
  * @property string $email
  * @property Carbon|null $email_verified_at
@@ -25,9 +26,7 @@ use Illuminate\Support\Carbon;
  * @property-read DatabaseNotificationCollection<int, DatabaseNotification> $notifications
  *
  * @method static UserFactory factory($count = null, $state = [])
- * @method static Builder<static>|User newModelQuery()
- * @method static Builder<static>|User newQuery()
- * @method static Builder<static>|User query()
+ * @method static Builder<static>|self query()
  *
  * @mixin Eloquent
  */

@@ -11,16 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * @property int $id
+ * @property-read int $id
+ *
  * @property array<array-key, mixed>|null $array_polygon
  * @property Polygon|null $magellan_polygon
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
  * @method static AreaFactory factory($count = null, $state = [])
- * @method static Builder<static>|Area newModelQuery()
- * @method static Builder<static>|Area newQuery()
- * @method static Builder<static>|Area query()
+ * @method static Builder<static>|self query()
  *
  * @mixin Eloquent
  */

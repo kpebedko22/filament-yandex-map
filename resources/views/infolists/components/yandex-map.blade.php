@@ -4,8 +4,8 @@
 >
     <div
         wire:ignore
-        ax-load
-        ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-yandex-map-entry', 'kpebedko22/filament-yandex-map') }}"
+        x-load
+        x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-yandex-map-entry', 'kpebedko22/filament-yandex-map') }}"
         x-data="filamentYandexMapEntry({
             apiKey: @js($getApiKey()),
             suggestApiKey: @js($getSuggestApiKey()),
