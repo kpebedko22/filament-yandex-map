@@ -6,7 +6,7 @@ use App\Filament\Resources\Areas\AreaResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewArea extends ViewRecord
+final class ViewArea extends ViewRecord
 {
     protected static string $resource = AreaResource::class;
 

@@ -6,7 +6,7 @@ use App\Filament\Resources\Routes\RouteResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewRoute extends ViewRecord
+final class ViewRoute extends ViewRecord
 {
     protected static string $resource = RouteResource::class;
 

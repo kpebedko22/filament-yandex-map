@@ -21,7 +21,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
 use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 use UnitEnum;
 
-class LocationResource extends Resource
+final class LocationResource extends Resource
 {
     protected static ?string $model = Location::class;
 
@@ -45,7 +45,7 @@ class LocationResource extends Resource
                         YandexMapEntry::make('magellan_point')
                             ->mode(YandexMapMode::Placemark)
                             ->usingMagellan(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -71,7 +71,7 @@ class LocationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
+                TextColumn::make('id'),
             ])
             ->recordActions([
                 ViewAction::make(),

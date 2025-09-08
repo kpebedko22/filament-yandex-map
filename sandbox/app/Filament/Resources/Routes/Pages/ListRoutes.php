@@ -6,7 +6,7 @@ use App\Filament\Resources\Routes\RouteResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
-class ListRoutes extends ListRecords
+final class ListRoutes extends ListRecords
 {
     protected static string $resource = RouteResource::class;
 

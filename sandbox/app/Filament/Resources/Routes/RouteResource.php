@@ -21,7 +21,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
 use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 use UnitEnum;
 
-class RouteResource extends Resource
+final class RouteResource extends Resource
 {
     protected static ?string $model = Route::class;
 
@@ -45,7 +45,7 @@ class RouteResource extends Resource
                         YandexMapEntry::make('magellan_line')
                             ->mode(YandexMapMode::Polyline)
                             ->usingMagellan(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -71,7 +71,7 @@ class RouteResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
+                TextColumn::make('id'),
             ])
             ->recordActions([
                 ViewAction::make(),

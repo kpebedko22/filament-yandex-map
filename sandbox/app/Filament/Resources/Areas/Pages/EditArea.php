@@ -7,7 +7,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditArea extends EditRecord
+final class EditArea extends EditRecord
 {
     protected static string $resource = AreaResource::class;
 

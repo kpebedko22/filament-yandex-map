@@ -21,7 +21,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
 use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 use UnitEnum;
 
-class AreaResource extends Resource
+final class AreaResource extends Resource
 {
     protected static ?string $model = Area::class;
 
@@ -45,7 +45,7 @@ class AreaResource extends Resource
                         YandexMapEntry::make('magellan_polygon')
                             ->mode(YandexMapMode::Polygon)
                             ->usingMagellan(),
-                    ])
+                    ]),
             ]);
     }
 

@@ -7,7 +7,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditRoute extends EditRecord
+final class EditRoute extends EditRecord
 {
     protected static string $resource = RouteResource::class;
 

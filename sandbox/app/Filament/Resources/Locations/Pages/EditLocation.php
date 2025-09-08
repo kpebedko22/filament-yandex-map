@@ -7,7 +7,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditLocation extends EditRecord
+final class EditLocation extends EditRecord
 {
     protected static string $resource = LocationResource::class;
 
