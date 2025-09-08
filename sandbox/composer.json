@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "php": "^8.4",
+        "php": "^8.2",
         "clickbar/laravel-magellan": "^2.0",
         "filament/filament": "^4.0",
         "kpebedko22/filament-yandex-map": "@dev",

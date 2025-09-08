@@ -1,4 +1,4 @@
-FROM php:8.4-fpm
+FROM php:8.3-fpm
 
 # Arguments defined in docker-compose
 ARG user
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip opcache sockets intl > /dev/null
+RUN docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd zip opcache sockets intl > /dev/null
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

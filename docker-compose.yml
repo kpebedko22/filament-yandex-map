@@ -30,7 +30,7 @@ services:
 
     # PGSQL
     pgsql:
-        image: imresamu/postgis:17-3.5.2-alpine3.21
+        image: imresamu/postgis:17-3.5-alpine
         volumes:
             - "pgsql:/var/lib/postgresql/data"
         environment:
