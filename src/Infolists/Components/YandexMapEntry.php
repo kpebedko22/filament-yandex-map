@@ -42,7 +42,7 @@ class YandexMapEntry extends Entry
     public function usingArray(int|string $latAttr = 0, int|string $lngAttr = 1): static
     {
         $this->getStateUsing(static function (YandexMapEntry $component, Model $record) use ($latAttr, $lngAttr) {
-            $state = $component->getStateFromRecord($record);
+            $state = $component->getConstantStateFromRecord($record);
 
             if ($state === null) {
                 return null;
@@ -60,7 +60,7 @@ class YandexMapEntry extends Entry
     public function usingMagellan(): static
     {
         $this->getStateUsing(static function (YandexMapEntry $component, Model $record) {
-            $state = $component->getStateFromRecord($record);
+            $state = $component->getConstantStateFromRecord($record);
 
             if ($state === null) {
                 return null;

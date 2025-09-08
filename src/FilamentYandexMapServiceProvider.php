@@ -21,10 +21,23 @@ class FilamentYandexMapServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         $this->app->resolving(AssetManager::class, function () {
-            FilamentAsset::register([
-                AlpineComponent::make('filament-yandex-map', __DIR__ . '/../resources/js/dist/filament-yandex-map.js'),
-                AlpineComponent::make('filament-yandex-map-entry', __DIR__ . '/../resources/js/dist/filament-yandex-map-entry.js'),
-            ], 'kpebedko22/filament-yandex-map');
+            FilamentAsset::register(
+                assets: $this->getAssets(),
+                package: $this->getAssetPackageName(),
+            );
         });
+    }
+
+    protected function getAssets(): array
+    {
+        return [
+            AlpineComponent::make('filament-yandex-map', __DIR__ . '/../resources/js/dist/filament-yandex-map.js'),
+            AlpineComponent::make('filament-yandex-map-entry', __DIR__ . '/../resources/js/dist/filament-yandex-map-entry.js'),
+        ];
+    }
+
+    protected function getAssetPackageName(): string
+    {
+        return 'kpebedko22/filament-yandex-map';
     }
 }
