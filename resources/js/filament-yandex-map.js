@@ -96,7 +96,7 @@ export default function filamentYandexMapField({
                     center: center,
                     controls: ['fullscreenControl', 'zoomControl', inputSearch],
                     zoom: this.zoom
-                }, {yandexMapDisablePoiInteractivity: true});
+                }, {autoFitToViewport: 'always', yandexMapDisablePoiInteractivity: true});
 
                 let geoObject = this.setupGeoObject(map);
 
