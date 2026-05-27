@@ -41,7 +41,12 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
 ->schema([
     YandexMap::make('point')
         // Set mode of geo-object. Always required!
-        ->mode(YandexMapMode::Placemark) 
+        ->usingPlacemark()
+        // or set mode of geo-object with geo-object properties and options
+        ->usingPlacemark(
+            new PlacemarkProperties(),
+            new PlacemarkOptions(),
+        )
         // By default, values are taken from config
         // You are free to override them using plain values or closure
         ->apiKey('your_yandex_api_key')
@@ -61,9 +66,6 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
         )
         ->drawBtnParameters()
         ->editBtnParameters()
-        // Setup geo-object
-        ->geoObjectOptions(new GeoObjectOptions())
-        ->geoObjectProperties(new GeoObjectProperties())
         // It's required to set up `formatStateUsing`, `dehydrateStateUsing` methods
         // to properly take data from record. The package provides some implementations
         // for common cases. Find more information further below. 
@@ -78,7 +80,7 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
 ->schema([
     YandexMapEntry::make('point')
         // Set mode of geo-object. Always required!
-        ->mode(YandexMapMode::Placemark) 
+        ->usingPlacemark()
         // By default, values are taken from config
         // You are free to override them using plain values or closure
         ->apiKey('your_yandex_api_key')
@@ -88,9 +90,6 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
         ->lang('ru_RU')
         // By default: 600px
         ->height('600px')  
-        // Setup geo-object
-        ->geoObjectOptions(new GeoObjectOptions())
-        ->geoObjectProperties(new GeoObjectProperties())
         // It's required to set up `getStateUsing` method
         // to properly take data from record. The package provides some implementations
         // for common cases. Find more information further below. 
@@ -149,7 +148,7 @@ use Kpebedko22\FilamentYandexMap\ValueObjects\Point;
 use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 
 YandexMap::make('point')
-    ->mode(YandexMapMode::Placemark)
+    ->usingPlacemark()
     ->formatStateUsing(static function (?Model $record) {
         return $record
             ? (new Point($record->lat, $record->lng))->toArray()
@@ -199,7 +198,7 @@ Default state of control buttons:
 
 ```php
 YandexMap::make('point')
-    ->mode(YandexMapMode::Placemark)
+    ->usingPlacemark()
     ->deleteBtnParameters(
         new ButtonData(__('filament-yandex-map::control-buttons.delete')),
         new ButtonOptions(

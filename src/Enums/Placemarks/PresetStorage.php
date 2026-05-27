@@ -8,8 +8,12 @@ namespace Kpebedko22\FilamentYandexMap\Enums\Placemarks;
 enum PresetStorage: string
 {
     case Icon = 'islands#icon';
+
     case DotIcon = 'islands#dotIcon';
+
     case CircleIcon = 'islands#circleIcon';
+
     case CircleDotIcon = 'islands#circleDotIcon';
+
     case GeolocationIcon = 'islands#geolocationIcon';
 }

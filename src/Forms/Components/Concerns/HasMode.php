@@ -7,21 +7,14 @@ use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 
 trait HasMode
 {
-    protected Closure|YandexMapMode|string $mode;
-
-    public function mode(Closure|YandexMapMode|string $mode): static
-    {
-        $this->mode = $mode;
-
-        return $this;
-    }
+    protected YandexMapMode|Closure|string $mode;
 
     public function getMode(): YandexMapMode
     {
-        $rawValue = $this->evaluate($this->mode);
+        $value = $this->evaluate($this->mode);
 
-        return $rawValue instanceof YandexMapMode
-            ? $rawValue
-            : YandexMapMode::from($rawValue);
+        return $value instanceof YandexMapMode
+            ? $value
+            : YandexMapMode::from($value);
     }
 }

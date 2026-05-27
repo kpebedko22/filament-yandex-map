@@ -6,24 +6,26 @@ use Filament\Infolists\Components\Entry;
 use Illuminate\Database\Eloquent\Model;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasApiKeys;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasCenter;
-use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasGeoObjectOptions;
-use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasGeoObjectProperties;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasHeight;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasLang;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMode;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPlacemark;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolygon;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolyline;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasZoom;
 use Kpebedko22\FilamentYandexMap\Services\StateHandlers\StateHandlerFactory;
 
 class YandexMapEntry extends Entry
 {
-    use HasApiKeys,
-        HasCenter,
-        HasGeoObjectOptions,
-        HasGeoObjectProperties,
-        HasHeight,
-        HasLang,
-        HasMode,
-        HasZoom;
+    use HasApiKeys;
+    use HasCenter;
+    use HasHeight;
+    use HasLang;
+    use HasMode;
+    use HasPlacemark;
+    use HasPolygon;
+    use HasPolyline;
+    use HasZoom;
 
     protected string $view = 'filament-yandex-map::infolists.components.yandex-map';
 
