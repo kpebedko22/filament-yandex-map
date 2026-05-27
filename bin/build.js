@@ -22,6 +22,7 @@ const defaultOptions = {
     platform: 'neutral',
     sourcemap: isDev ? 'inline' : false,
     sourcesContent: isDev,
+    treeShaking: true,
     target: ['es2020'],
     minifySyntax: true,
     minifyWhitespace: true,
@@ -43,14 +44,17 @@ const defaultOptions = {
     }],
 }
 
-compile({
-    ...defaultOptions,
-    entryPoints: ['./resources/js/filament-yandex-map.js'],
-    outfile: './resources/js/dist/filament-yandex-map.js',
-})
+const files = [
+    'filament-yandex-map',
+    'filament-yandex-map-entry',
+]
 
-compile({
-    ...defaultOptions,
-    entryPoints: ['./resources/js/filament-yandex-map-entry.js'],
-    outfile: './resources/js/dist/filament-yandex-map-entry.js',
+files.forEach((file) => {
+    compile({
+        ...defaultOptions,
+        entryPoints: [`./resources/js/${file}.js`],
+        outfile: `./resources/js/dist/${file}.js`,
+    }).then(() => {
+        console.log(`Build completed for ${file}.js`)
+    })
 })

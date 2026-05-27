@@ -16,7 +16,6 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Kpebedko22\FilamentYandexMap\Enums\YandexMapMode;
 use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
 use Kpebedko22\FilamentYandexMap\Infolists\Components\YandexMapEntry;
 use UnitEnum;
@@ -39,11 +38,11 @@ final class RouteResource extends Resource
                     ->columnSpanFull()
                     ->components([
                         YandexMapEntry::make('array_line')
-                            ->mode(YandexMapMode::Polyline)
+                            ->usingPolyline()
                             ->usingArray(),
 
                         YandexMapEntry::make('magellan_line')
-                            ->mode(YandexMapMode::Polyline)
+                            ->usingPolyline()
                             ->usingMagellan(),
                     ]),
             ]);
@@ -57,11 +56,11 @@ final class RouteResource extends Resource
                     ->columnSpanFull()
                     ->components([
                         YandexMap::make('array_line')
-                            ->mode(YandexMapMode::Polyline)
+                            ->usingPolyline()
                             ->usingArray(),
 
                         YandexMap::make('magellan_line')
-                            ->mode(YandexMapMode::Polyline)
+                            ->usingPolyline()
                             ->usingMagellan(),
                     ]),
             ]);
