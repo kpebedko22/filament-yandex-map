@@ -12,6 +12,20 @@ trait HasGeoObject
 
     protected Options|Closure|array|null $options = null;
 
+    public function geoObjectProperties(Properties|Closure|array|null $properties): static
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    public function geoObjectOptions(Options|Closure|array|null $options): static
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
     public function getGeoObjectProperties(): ?array
     {
         $value = $this->evaluate($this->properties);

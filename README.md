@@ -47,6 +47,8 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
             new PlacemarkProperties(),
             new PlacemarkOptions(),
         )
+        // or set mode of geo-object using mode() method
+        ->mode(YandexMapMode::Placemark) 
         // By default, values are taken from config
         // You are free to override them using plain values or closure
         ->apiKey('your_yandex_api_key')
