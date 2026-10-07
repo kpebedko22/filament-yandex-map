@@ -22,7 +22,7 @@ class PolygonRule implements ValidationRule
         if (is_array($value)) {
             foreach ($value as $item) {
                 if (is_array($item) && count($item) < self::MIN_POINTS_COUNT) {
-                    $fail(__('filament-yandex-map::rules/polyline.min', ['count' => self::MIN_POINTS_COUNT - 1]));
+                    $fail(__('filament-yandex-map::rules/polygon.min', ['count' => self::MIN_POINTS_COUNT - 1]));
                 }
             }
         }
