@@ -226,7 +226,8 @@ You can modify geo-object properties and options.
 
 ## Testing
 
-No tests yet.
+Tests are written with [Pest](https://pestphp.com) on top of [Orchestra Testbench](https://packages.tools/testbench).
+Install the dependencies with `composer install` and run:
 
 ```bash
 composer test
