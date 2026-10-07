@@ -2,6 +2,7 @@
 
 namespace Kpebedko22\FilamentYandexMap\Tests;
 
+use Clickbar\Magellan\MagellanServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Kpebedko22\FilamentYandexMap\FilamentYandexMapServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -20,6 +21,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
+            MagellanServiceProvider::class,
             FilamentYandexMapServiceProvider::class,
         ];
     }
