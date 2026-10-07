@@ -22,6 +22,7 @@
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
+        "clickbar/laravel-magellan": "^2.0",
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "larastan/larastan": "^2.9",
