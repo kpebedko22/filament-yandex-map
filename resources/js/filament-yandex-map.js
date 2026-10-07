@@ -1,3 +1,5 @@
+import MultiPolygon from './multi-polygon.js';
+
 export default function filamentYandexMapField({
                                                    apiKey,
                                                    suggestApiKey,
@@ -163,6 +165,7 @@ export default function filamentYandexMapField({
          * - placemark (marker)
          * - polyline (line)
          * - polygon
+         * - multipolygon (collection of polygons)
          *
          * When geo-object is created and exists:
          * - geo-object is added to map
@@ -202,10 +205,18 @@ export default function filamentYandexMapField({
                         geoObjectOptions
                     );
                     break;
+                case 'multipolygon':
+                    geoObject = new MultiPolygon(
+                        this.getState(),
+                        geoObjectProperties,
+                        geoObjectOptions
+                    );
+                    break;
             }
 
             if (geoObject) {
-                map.geoObjects.add(geoObject);
+                // Multipolygon is not a ymaps object, its collection of polygons is added to the map.
+                map.geoObjects.add(geoObject.collection ?? geoObject);
 
                 this.zoomToGeoObject(map, geoObject);
 
