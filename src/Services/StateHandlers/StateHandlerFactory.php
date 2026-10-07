@@ -13,6 +13,7 @@ readonly class StateHandlerFactory
             YandexMapMode::Placemark => new PlacemarkStateHandler,
             YandexMapMode::Polyline => new PolylineStateHandler,
             YandexMapMode::Polygon => new PolygonStateHandler,
+            YandexMapMode::MultiPolygon => new MultiPolygonStateHandler,
             default => throw new InvalidArgumentException('Unknown mode: ' . $mode->value),
         };
     }

@@ -9,6 +9,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasCenter;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasHeight;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasLang;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMode;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMultiPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPlacemark;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolyline;
@@ -22,6 +23,7 @@ class YandexMapEntry extends Entry
     use HasHeight;
     use HasLang;
     use HasMode;
+    use HasMultiPolygon;
     use HasPlacemark;
     use HasPolygon;
     use HasPolyline;

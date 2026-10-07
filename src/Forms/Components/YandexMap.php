@@ -13,10 +13,12 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasControlButtons;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasHeight;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasLang;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMode;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMultiPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPlacemark;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolyline;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasZoom;
+use Kpebedko22\FilamentYandexMap\Rules\MultiPolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolylineRule;
 use Kpebedko22\FilamentYandexMap\Services\StateHandlers\StateHandlerFactory;
@@ -29,6 +31,7 @@ class YandexMap extends Field
     use HasHeight;
     use HasLang;
     use HasMode;
+    use HasMultiPolygon;
     use HasPlacemark;
     use HasPolygon;
     use HasPolyline;
@@ -53,6 +56,10 @@ class YandexMap extends Field
 
         $this->rule(new PolygonRule, static function (YandexMap $component): bool {
             return $component->getMode() === YandexMapMode::Polygon;
+        });
+
+        $this->rule(new MultiPolygonRule, static function (YandexMap $component): bool {
+            return $component->getMode() === YandexMapMode::MultiPolygon;
         });
 
         $this->deleteBtnParameters(

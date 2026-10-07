@@ -7,4 +7,5 @@ enum YandexMapMode: string
     case Placemark = 'placemark';
     case Polyline = 'polyline';
     case Polygon = 'polygon';
+    case MultiPolygon = 'multipolygon';
 }
