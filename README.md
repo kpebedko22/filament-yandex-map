@@ -107,6 +107,38 @@ The package provides work with the following types of geometries (geo-objects):
 - **Point**
 - **Linestring**
 - **Polygon**
+- **MultiPolygon**
+
+### MultiPolygon
+
+Use `usingMultiPolygon()` when a geo-object consists of several separate contours,
+e.g. a service area of two cities. The rings of one polygon can't be used for that:
+they are an outer contour and holes.
+
+```php
+YandexMap::make('area')
+    ->usingMultiPolygon()
+    // or with properties and options which are applied to every polygon
+    ->usingMultiPolygon(
+        new PolygonProperties(),
+        new PolygonOptions(),
+    )
+    ->usingArray() // or ->usingMagellan()
+```
+
+The state is a list of polygons, each polygon is a list of rings (an outer contour
+and, optionally, holes), each ring is a closed list of `[lat, lng]` points.
+Empty state is `null`.
+
+```php
+[
+    [[[53.0, 83.0], [53.0, 84.0], [54.0, 84.0], [53.0, 83.0]]],   // polygon with one ring
+    [[[55.0, 85.0], [55.0, 86.0], [56.0, 86.0], [55.0, 85.0]]],   // another polygon
+]
+```
+
+Control buttons work with all polygons: "Draw" starts a new polygon and keeps the existing ones,
+"Edit" toggles editing of every polygon, "Delete" removes all of them.
 
 ## Storing geometries in database
 
@@ -131,11 +163,12 @@ use [Laravel Magellan](https://github.com/clickbar/laravel-magellan) package.
 
 The package supports work with the following geometries:
 
-| Class                                          | Migration                            |
-|------------------------------------------------|--------------------------------------|
-| `Clickbar\Magellan\Data\Geometries\Point`      | `$table->magellanPoint('point')`     |
-| `Clickbar\Magellan\Data\Geometries\LineString` | `$table->magellanLineString('line')` |
-| `Clickbar\Magellan\Data\Geometries\Polygon`    | `$table->magellanPolygon('polygon')` |
+| Class                                            | Migration                                      |
+|--------------------------------------------------|------------------------------------------------|
+| `Clickbar\Magellan\Data\Geometries\Point`        | `$table->magellanPoint('point')`               |
+| `Clickbar\Magellan\Data\Geometries\LineString`   | `$table->magellanLineString('line')`           |
+| `Clickbar\Magellan\Data\Geometries\Polygon`      | `$table->magellanPolygon('polygon')`           |
+| `Clickbar\Magellan\Data\Geometries\MultiPolygon` | `$table->magellanMultiPolygon('multipolygon')` |
 
 ### Separate lat/lng columns
 
