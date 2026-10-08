@@ -58,6 +58,9 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
         ->lang('ru_RU')
         // By default: 600px
         ->height('600px')
+        // Search control is shown by default, with the large size
+        ->searchControl()
+        ->searchControlSize(SearchControlSize::Large)
         // Setup control buttons  
         ->deleteBtnParameters(
             new ButtonData(__('filament-yandex-map::control-buttons.delete')),
@@ -252,6 +255,30 @@ YandexMap::make('point')
 ```
 
 You are free to change the visual state of this control buttons.
+
+## Search control
+
+The form map shows an address search control in the top left corner. By default
+it has the large size, which takes the whole top row of a narrow map (for example,
+on a phone) and covers the control buttons. Turn the search control off or make it smaller:
+
+```php
+use Kpebedko22\FilamentYandexMap\Enums\SearchControlSize;
+
+YandexMap::make('area')
+    ->usingPolygon()
+    // Hide the search control
+    ->searchControl(false)
+    // or choose its size: Small, Medium or Large (default)
+    ->searchControlSize(SearchControlSize::Small);
+```
+
+Both methods accept a closure. `searchControlSize()` also accepts a plain
+string (`'small'`, `'medium'`, `'large'`). The infolist component has no search control.
+
+`Small` and `Medium` show only a button (an icon or "Search"). A tap opens the search
+field; on a narrow map it takes the whole top row, covering the control buttons, until
+you fold it back with the arrow.
 
 ## Geometries properties and options
 

@@ -16,6 +16,8 @@
             geoObjectOptions: @js($getGeoObjectOptions()),
             isDisabled: @js($isDisabled()),
             mode: @js($getMode()),
+            hasSearchControl: @js($hasSearchControl()),
+            searchControlSize: @js($getSearchControlSize()),
             deleteBtnParameters: @js($getDeleteBtnParameters()),
             drawBtnParameters: @js($getDrawBtnParameters()),
             editBtnParameters: @js($getEditBtnParameters()),
