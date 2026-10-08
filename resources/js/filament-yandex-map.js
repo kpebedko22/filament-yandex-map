@@ -10,6 +10,8 @@ export default function filamentYandexMapField({
                                                    geoObjectOptions,
                                                    isDisabled,
                                                    mode,
+                                                   hasSearchControl = true,
+                                                   searchControlSize = 'large',
                                                    deleteBtnParameters,
                                                    drawBtnParameters,
                                                    editBtnParameters,
@@ -87,16 +89,20 @@ export default function filamentYandexMapField({
             window.filamentYandexMapsAPILoaded = true;
 
             ymaps.ready(() => {
-                let inputSearch = new ymaps.control.SearchControl({
-                    options: {
-                        size: 'large',
-                        provider: 'yandex#search'
-                    }
-                });
+                const controls = ['fullscreenControl', 'zoomControl'];
+
+                if (hasSearchControl) {
+                    controls.push(new ymaps.control.SearchControl({
+                        options: {
+                            size: searchControlSize,
+                            provider: 'yandex#search'
+                        }
+                    }));
+                }
 
                 const map = new ymaps.Map(mapEl, {
                     center: center,
-                    controls: ['fullscreenControl', 'zoomControl', inputSearch],
+                    controls: controls,
                     zoom: this.zoom
                 }, {autoFitToViewport: 'always', yandexMapDisablePoiInteractivity: true});
 

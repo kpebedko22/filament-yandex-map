@@ -17,6 +17,7 @@ use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasMultiPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPlacemark;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolygon;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasPolyline;
+use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasSearchControl;
 use Kpebedko22\FilamentYandexMap\Forms\Components\Concerns\HasZoom;
 use Kpebedko22\FilamentYandexMap\Rules\MultiPolygonRule;
 use Kpebedko22\FilamentYandexMap\Rules\PolygonRule;
@@ -35,6 +36,7 @@ class YandexMap extends Field
     use HasPlacemark;
     use HasPolygon;
     use HasPolyline;
+    use HasSearchControl;
     use HasZoom;
 
     protected string $view = 'filament-yandex-map::forms.components.yandex-map';
