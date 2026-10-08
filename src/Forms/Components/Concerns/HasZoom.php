@@ -10,7 +10,7 @@ trait HasZoom
 
     public function getZoom(): ?int
     {
-        return $this->evaluate($this->zoom);
+        return $this->evaluate($this->zoom) ?? 12;
     }
 
     public function zoom(Closure|int|null $zoom): static
