@@ -12,7 +12,7 @@ trait HasApiKeys
 
     public function getApiKey(): string
     {
-        return $this->evaluate($this->apiKey);
+        return $this->evaluate($this->apiKey) ?? '';
     }
 
     public function apiKey(Closure|string|null $apiKey): static
@@ -24,7 +24,7 @@ trait HasApiKeys
 
     public function getSuggestApiKey(): string
     {
-        return $this->evaluate($this->suggestApiKey);
+        return $this->evaluate($this->suggestApiKey) ?? '';
     }
 
     public function suggestApiKey(Closure|string|null $suggestApiKey): static
