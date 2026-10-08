@@ -27,6 +27,10 @@ return [
 ];
 ```
 
+Every key is optional. Without a key (or with `null`) the component uses `''` for the API keys,
+`ru_RU` for `lang`, `[53.35, 83.75]` for `center` and `12` for `zoom`.
+Values set on the component (`->center()`, `->lang()` and so on) override the config.
+
 Optionally, you can publish the translations using:
 
 ```bash

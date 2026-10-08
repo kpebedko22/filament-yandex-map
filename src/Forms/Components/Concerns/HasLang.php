@@ -7,7 +7,7 @@ use Kpebedko22\FilamentYandexMap\Enums\YandexMapLang;
 
 trait HasLang
 {
-    protected YandexMapLang|Closure|string $lang;
+    protected YandexMapLang|Closure|string|null $lang = null;
 
     public function lang(YandexMapLang|Closure|string $lang): static
     {
@@ -18,7 +18,7 @@ trait HasLang
 
     public function getLang(): YandexMapLang
     {
-        $rawValue = $this->evaluate($this->lang);
+        $rawValue = $this->evaluate($this->lang) ?: YandexMapLang::ru_RU;
 
         return $rawValue instanceof YandexMapLang
             ? $rawValue
