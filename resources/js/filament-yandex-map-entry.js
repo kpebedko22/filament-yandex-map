@@ -10,6 +10,7 @@ export default function filamentYandexMapEntry({
                                                    geoObjectProperties,
                                                    geoObjectOptions,
                                                    mode,
+                                                   layers = null,
                                                    mapEl,
                                                }) {
     return {
@@ -71,7 +72,7 @@ export default function filamentYandexMapEntry({
          *
          * And create map for current component:
          * - Initiate map with controls
-         * - Initiate geo-object
+         * - Initiate geo-object (or layers, if there are any)
          * - Setup $watch('state') to receive state from server
          */
         createMap: function () {
@@ -83,6 +84,12 @@ export default function filamentYandexMapEntry({
                     controls: ['fullscreenControl', 'zoomControl'],
                     zoom: this.zoom
                 }, {autoFitToViewport: 'always', yandexMapDisablePoiInteractivity: true});
+
+                if (layers !== null) {
+                    this.setupLayers(map);
+
+                    return;
+                }
 
                 let geoObject = this.setupGeoObject(map);
 
@@ -143,44 +150,7 @@ export default function filamentYandexMapEntry({
          * - geo-object events are enabled (only if component is not disabled)
          */
         setupGeoObject: function (map) {
-            let geoObject = null,
-                isEditing = true;
-
-            switch (this.mode) {
-                case 'placemark':
-                    geoObject = new ymaps.Placemark(
-                        this.getState(),
-                        geoObjectProperties,
-                        {
-                            ...geoObjectOptions,
-                            // 'draggable' option must be set to false for proper drawing.
-                            ...{draggable: false},
-                        }
-                    );
-                    isEditing = false;
-                    break;
-                case 'polyline':
-                    geoObject = new ymaps.Polyline(
-                        this.getState(),
-                        geoObjectProperties,
-                        geoObjectOptions
-                    );
-                    break;
-                case 'polygon':
-                    geoObject = new ymaps.Polygon(
-                        this.getState(),
-                        geoObjectProperties,
-                        geoObjectOptions
-                    );
-                    break;
-                case 'multipolygon':
-                    geoObject = new MultiPolygon(
-                        this.getState(),
-                        geoObjectProperties,
-                        geoObjectOptions
-                    );
-                    break;
-            }
+            const geoObject = this.createGeoObject(this.mode, this.getState(), geoObjectProperties, geoObjectOptions);
 
             if (geoObject) {
                 // Multipolygon is not a ymaps object, its collection of polygons is added to the map.
@@ -190,6 +160,66 @@ export default function filamentYandexMapEntry({
             }
 
             return geoObject;
+        },
+
+        /**
+         * Create geo-object of the given mode, null if the mode is unknown.
+         */
+        createGeoObject: function (mode, state, properties, options) {
+            switch (mode) {
+                case 'placemark':
+                    return new ymaps.Placemark(
+                        state,
+                        properties,
+                        {
+                            ...options,
+                            // 'draggable' option must be set to false for proper drawing.
+                            ...{draggable: false},
+                        }
+                    );
+                case 'polyline':
+                    return new ymaps.Polyline(state, properties, options);
+                case 'polygon':
+                    return new ymaps.Polygon(state, properties, options);
+                case 'multipolygon':
+                    return new MultiPolygon(state, properties, options);
+            }
+
+            return null;
+        },
+
+        /**
+         * Setup layers: several geo-objects on one map, each with its own mode,
+         * properties and options.
+         *
+         * The map is scaled to fit all of them. The zoom is used only for a single point,
+         * which has no bounds to fit.
+         */
+        setupLayers: function (map) {
+            layers.forEach((layer) => {
+                const geoObject = this.createGeoObject(layer.mode, layer.state, layer.properties, layer.options);
+
+                if (geoObject) {
+                    map.geoObjects.add(geoObject.collection ?? geoObject);
+                }
+            });
+
+            const bounds = map.geoObjects.getBounds();
+
+            if (!bounds) {
+                return;
+            }
+
+            if (bounds[0][0] === bounds[1][0] && bounds[0][1] === bounds[1][1]) {
+                map.setCenter(bounds[0], this.zoom);
+
+                return;
+            }
+
+            map.setBounds(bounds, {
+                zoomMargin: 40,
+                checkZoomRange: true,
+            });
         },
 
         /**

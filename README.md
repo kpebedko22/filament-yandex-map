@@ -100,6 +100,50 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
 ])
 ```
 
+### Several geo-objects on one map
+
+`YandexMapLayersEntry` shows several geo-objects on one map, for viewing only.
+Every layer is a regular `YandexMapEntry` with its own mode, state, properties and options,
+so each of them can have its own color and hint.
+
+```php
+->schema([
+    YandexMapLayersEntry::make('overview')
+        // Map settings are taken from the config, as for YandexMapEntry
+        ->height('500px')
+        ->layers([
+            YandexMapEntry::make('route')
+                ->usingPolyline(
+                    new PolylineProperties(hintContent: 'Route'),
+                    new PolylineOptions(strokeColor: '#e11d48', strokeWidth: 4),
+                )
+                ->usingMagellan(),
+
+            YandexMapEntry::make('zone')
+                ->usingPolygon(
+                    new PolygonProperties(hintContent: 'Zone'),
+                    new PolygonOptions(fillColor: '#2563eb55', strokeColor: '#2563eb', strokeWidth: 2),
+                )
+                ->usingMagellan(),
+
+            YandexMapEntry::make('regions')
+                ->usingMultiPolygon(
+                    new PolygonProperties(hintContent: 'Regions'),
+                    new PolygonOptions(fillColor: '#16a34a55', strokeColor: '#16a34a', strokeWidth: 2),
+                )
+                ->usingArray(),
+        ]),
+])
+```
+
+- A layer takes its geo-object from the record by its name, like any entry. To get it from elsewhere,
+  use `->getStateUsing()` and return the state in the format of the layer mode, e.g. `[[53.0, 83.0], [54.0, 84.0]]` for a polyline.
+- Layers without a geo-object and hidden layers (`->hidden()`, `->visible()`) are skipped.
+- The map is scaled to fit all layers. `center()` and `zoom()` of the entry are used only when there is nothing to fit:
+  no layers have a geo-object, or there is a single point.
+- `apiKey()`, `suggestApiKey()`, `lang()`, `center()`, `zoom()` and `height()` are set on `YandexMapLayersEntry`;
+  the same settings on the layers are ignored.
+
 ## Geometries
 
 The package provides work with the following types of geometries (geo-objects):
