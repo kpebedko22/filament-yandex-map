@@ -18,6 +18,7 @@
             mode: @js($getMode()),
             hasSearchControl: @js($hasSearchControl()),
             searchControlSize: @js($getSearchControlSize()),
+            searchControlProvider: @js($getSearchControlProvider()),
             deleteBtnParameters: @js($getDeleteBtnParameters()),
             drawBtnParameters: @js($getDrawBtnParameters()),
             editBtnParameters: @js($getEditBtnParameters()),

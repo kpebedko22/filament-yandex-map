@@ -1,5 +1,6 @@
 <?php
 
+use Kpebedko22\FilamentYandexMap\Enums\SearchControlProvider;
 use Kpebedko22\FilamentYandexMap\Enums\SearchControlSize;
 use Kpebedko22\FilamentYandexMap\Forms\Components\YandexMap;
 
@@ -17,7 +18,8 @@ it('keeps the large search control by default', function () {
     $component = YandexMap::make('area');
 
     expect($component->hasSearchControl())->toBeTrue()
-        ->and($component->getSearchControlSize())->toBe(SearchControlSize::Large);
+        ->and($component->getSearchControlSize())->toBe(SearchControlSize::Large)
+        ->and($component->getSearchControlProvider())->toBe(SearchControlProvider::Search);
 });
 
 it('toggles the search control', function (?bool $condition, bool $expected) {
@@ -49,4 +51,17 @@ it('sets the size of the search control', function (mixed $size, SearchControlSi
 
 it('rejects an unknown size of the search control', function () {
     YandexMap::make('area')->searchControlSize('huge')->getSearchControlSize();
+})->throws(ValueError::class);
+
+it('sets the provider of the search control', function (mixed $provider, SearchControlProvider $expected) {
+    expect(YandexMap::make('area')->searchControlProvider($provider)->getSearchControlProvider())->toBe($expected);
+})->with([
+    'enum' => [SearchControlProvider::Map, SearchControlProvider::Map],
+    'string' => ['yandex#map', SearchControlProvider::Map],
+    'closure with enum' => [static fn (): SearchControlProvider => SearchControlProvider::Map, SearchControlProvider::Map],
+    'closure with string' => [static fn (): string => 'yandex#search', SearchControlProvider::Search],
+]);
+
+it('rejects an unknown provider of the search control', function () {
+    YandexMap::make('area')->searchControlProvider('google#maps')->getSearchControlProvider();
 })->throws(ValueError::class);

@@ -3,6 +3,7 @@
 namespace Kpebedko22\FilamentYandexMap\Forms\Components\Concerns;
 
 use Closure;
+use Kpebedko22\FilamentYandexMap\Enums\SearchControlProvider;
 use Kpebedko22\FilamentYandexMap\Enums\SearchControlSize;
 
 trait HasSearchControl
@@ -10,6 +11,8 @@ trait HasSearchControl
     protected Closure|bool $hasSearchControl = true;
 
     protected Closure|SearchControlSize|string $searchControlSize = SearchControlSize::Large;
+
+    protected Closure|SearchControlProvider|string $searchControlProvider = SearchControlProvider::Search;
 
     public function searchControl(Closure|bool $condition = true): static
     {
@@ -37,5 +40,21 @@ trait HasSearchControl
         return $value instanceof SearchControlSize
             ? $value
             : SearchControlSize::from($value);
+    }
+
+    public function searchControlProvider(Closure|SearchControlProvider|string $provider): static
+    {
+        $this->searchControlProvider = $provider;
+
+        return $this;
+    }
+
+    public function getSearchControlProvider(): SearchControlProvider
+    {
+        $value = $this->evaluate($this->searchControlProvider);
+
+        return $value instanceof SearchControlProvider
+            ? $value
+            : SearchControlProvider::from($value);
     }
 }
