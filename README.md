@@ -58,9 +58,11 @@ php artisan vendor:publish --tag="filament-yandex-map-translations"
         ->lang('ru_RU')
         // By default: 600px
         ->height('600px')
-        // Search control is shown by default, with the large size
+        // Search control is shown by default, with the large size,
+        // and searches for addresses and businesses
         ->searchControl()
         ->searchControlSize(SearchControlSize::Large)
+        ->searchControlProvider(SearchControlProvider::Search)
         // Setup control buttons  
         ->deleteBtnParameters(
             new ButtonData(__('filament-yandex-map::control-buttons.delete')),
@@ -258,7 +260,7 @@ You are free to change the visual state of this control buttons.
 
 ## Search control
 
-The form map shows an address search control in the top left corner. By default
+The form map shows a search control in the top left corner. By default
 it has the large size, which takes the whole top row of a narrow map (for example,
 on a phone) and covers the control buttons. Turn the search control off or make it smaller:
 
@@ -279,6 +281,23 @@ string (`'small'`, `'medium'`, `'large'`). The infolist component has no search 
 `Small` and `Medium` show only a button (an icon or "Search"). A tap opens the search
 field; on a narrow map it takes the whole top row, covering the control buttons, until
 you fold it back with the arrow.
+
+By default the search control looks for addresses and businesses (the `yandex#search`
+provider). Business search has to be available for your API key: otherwise the control
+finds nothing and shows "The server was unable to process the request" (in Chrome DevTools
+the request to `services/search/v2/` fails with `ERR_BLOCKED_BY_ORB`). With such a key,
+search for addresses only (the `yandex#map` provider, the default of the Yandex Maps API itself):
+
+```php
+use Kpebedko22\FilamentYandexMap\Enums\SearchControlProvider;
+
+YandexMap::make('area')
+    ->usingPolygon()
+    // Addresses only: Map, addresses and businesses: Search (default)
+    ->searchControlProvider(SearchControlProvider::Map);
+```
+
+`searchControlProvider()` also accepts a closure or a plain string (`'yandex#map'`, `'yandex#search'`).
 
 ## Geometries properties and options
 

@@ -12,6 +12,7 @@ export default function filamentYandexMapField({
                                                    mode,
                                                    hasSearchControl = true,
                                                    searchControlSize = 'large',
+                                                   searchControlProvider = 'yandex#search',
                                                    deleteBtnParameters,
                                                    drawBtnParameters,
                                                    editBtnParameters,
@@ -95,7 +96,7 @@ export default function filamentYandexMapField({
                     controls.push(new ymaps.control.SearchControl({
                         options: {
                             size: searchControlSize,
-                            provider: 'yandex#search'
+                            provider: searchControlProvider
                         }
                     }));
                 }
